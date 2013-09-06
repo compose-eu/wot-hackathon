@@ -12,17 +12,18 @@ http://www.compose-project.eu/content/hardware-information
 To ease the communication with the COMPOSE core platform, a COMPOSE Flyport library has been developed (based heavily on HTTP Library (http://wiki.openpicus.com/index.php/HTTPicus) for the Flyport).
 
 To use the library simply:
-1) Include the header file in your taskFlyport.c file:
-#include "compose.h"
+- Include the header file in your taskFlyport.c file:
+<code>#include "compose.h"</code>
+
 and put the compose library files inside the 'Libs/ExternalLib' folder of your Flyport project.
 
-2) Edit the "Libs/ExternalLib/compose.c" file and change the value of "pp.authorization" with your authorisation token.
+- Edit the "Libs/ExternalLib/compose.c" file and change the value of "pp.authorization" with your authorisation token.
 
-3) Use in your code the method posSensorValue("SO_name", sensor_value, "SO_ID")
+- Use in your code the method posSensorValue("SO_name", sensor_value, "SO_ID")
 
-4) Before compiling your Flyport project, run the configuration Wizard and at the 'TCP Socket Configuration' section, select "GENERIC_TCP_CLIENT" and put 600 for TX Buffer and 200 for RX Buffer.
+- Before compiling your Flyport project, run the configuration Wizard and at the 'TCP Socket Configuration' section, select "GENERIC_TCP_CLIENT" and put 600 for TX Buffer and 200 for RX Buffer.
 
-5) Remember to put the correct WiFi Access Point settings at the next step :)
+- Remember to put the correct WiFi Access Point settings at the next step :)
 
 Remember also that you need first to register to COMPOSE and create a COMPOSE Service Object. To register into COMPOSE and receive an authorisation token (API Key) please visit:
 http://testbed.compose-project.eu:8081/
@@ -38,6 +39,8 @@ http://testbed.compose-project.eu:8010/thngs/create.json
 authorisation: YOUR_API_TOKEN
 
 - Including in the body a JSON representing your SO, like the following:
+
+<code>
 {
   "streams": {
     "streams": [
@@ -52,5 +55,6 @@ authorisation: YOUR_API_TOKEN
        }
      }
 }
+</code>
 
 The POST should return the new SO ID that you need to use in the "postSensorValue" method.
