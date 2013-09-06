@@ -1,20 +1,24 @@
 <?php
 
+//SET THE GET ENDPOINT FOR THE COMPOSE SO
 $uri = 'http://api.compose-project.eu:8010/thngs/1377515972748279ff7a4b8ee4b27ba6f6db0412227ba/streams/temperature';
 $ch = curl_init($uri);
+
+//ADD AUTHORIZATION TOKEN INTO HEADER REQUEST
 curl_setopt_array($ch, array(
-    CURLOPT_HTTPHEADER  => array('authorization: N2U0ZGNmN2YtZDA1Ny00NzhhLTllZjctNDQ2NGEwN2U2ODU4Mzk5NDg5MTYtZTc4YS00OWZiLThlZjctMzVjNTY1ZTNkMDk0'),
+    CURLOPT_HTTPHEADER  => array('authorization: PUT_YOUR_AUTHORIZATION_TOKEN_HERE'),
     CURLOPT_RETURNTRANSFER  =>true,
     CURLOPT_VERBOSE     => 1
 ));
+
+//STORE THE OUTPUT (JSON FILE)
 $json = curl_exec($ch);
 curl_close($ch);
-// echo response output
-//echo $out;
 
-//var_dump(json_decode($json, true));
+
+//PARSE THE JSON OUTPUT
 $obj = json_decode($json, true);
-//print $obj->{'current-value'}; 
+
 
 
 $jsonIterator = new RecursiveIteratorIterator(
@@ -30,5 +34,6 @@ foreach ($jsonIterator as $key => $val) {
     }
 }
 
+//DISPLAY THE LATEST VALUE
 echo $val;
 ?>
