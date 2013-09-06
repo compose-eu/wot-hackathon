@@ -1,4 +1,4 @@
-wot-hackathon
+compose_web_client
 =============
 
-Software for the Web of Things Hackathon (Zurich 08 September 2013)
+A simple example on how to read data from a COMPOSE Service Object using a GET HTTP Request. Visualization is performed using the RGraph Javascript library
